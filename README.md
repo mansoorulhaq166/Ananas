@@ -24,63 +24,6 @@ An easy-to-integrate photo editor for your Android apps, with custom features fo
 
 <br>
 
-## Previews
-
-Main Menu | Text Mode
-:--: | :--:
-<img src="/static/main_menu.gif" width="300" /> | <img src="/static/text_mode.gif" width="300" />
-
-Rotate Mode | Crop Mode
-:--: | :--:
-<img src="/static/rotate_mode.gif" width="300" /> | <img src="/static/crop_feature.gif" width="300" />
-
-Filter Mode | Paint Mode
-:--: | :--:
-<img src="/static/filter_mode.gif" width="300" /> | <img src="/static/paint_mode.gif" width="300" />
-
-Beauty Mode | Saturation Mode
-:--: | :--:
-<img src="/static/beauty_mode.gif" width="300" /> | <img src="/static/saturation_mode.gif" width="300" />
-
-Brightness Mode | Sticker Mode
-:--: | :--:
-<img src="/static/brightness_mode.gif" width="300" /> | <img src="/static/sticker_mode.gif" width="300" />
-
-<br>
-
-## Getting Started
-Add the JitPack repository to your root `build.gradle` file:
-```
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
-
-Add the dependency to your app's `build.gradle` file:
-```
-implementation 'com.github.mansoorulhaq166:Ananas:1.2.6'
-```
-
-## Important!
-
-Update your `proguard-rules.pro` file:
-```pro
--keepclasseswithmembers class * {
-    native <methods>;
-}
-```
-
-Add this configuration to your app's `build.gradle`:
-```
-compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-}
-```
-
 ## RxJava Compatibility Note
 
 If your project uses `RxJava 1.0`, and this library uses `RxJava 2.0`, add the following to your app’s `build.gradle` to allow both versions to co-exist:
