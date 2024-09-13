@@ -1,27 +1,26 @@
 <img align="left" src="art/ananas.png" width="100" height="100" />
 
-# Ananas Photo Editor
+# Ananas Photo Editor (Fork)
 
-[![Download](https://img.shields.io/badge/JitPack-1.2.6-blue.svg)](https://jitpack.io/#iamutkarshtiwari/Ananas/1.2.6) ![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg)
+[![Download](https://img.shields.io/badge/JitPack-1.2.6-blue.svg)](https://jitpack.io/#mansoorulhaq166/Ananas/1.2.6) ![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg)
 
-An easy photo editor integration for your Android apps.
+An easy-to-integrate photo editor for your Android apps, with custom features for your project.
 
 ## Features
 
-- [**Paint**](#paint) option with Brush Color, Size and Eraser.
-- Adding/Editing [**Text**](#text) with option to change its color.
-- Adding [**Stickers**](#adding-imagesstickers)
-- Pinch to [**Zoom**](), [**Rotate**]() and [**Crop**]() views.
-- [**Undo and Redo**](#undo-and-redo) for all changes.
-- [**Saving**](#saving) Photo after editing.
-- Applying [**Filters**]() to your image
-- Changing the [**Contrast**]() and [**Saturation**]() of images
-- Addition [**Beauty**]() settings for images with face
-
+- [**Paint**](#paint) with brush color, size, and eraser options.
+- Adding/Editing [**Text**](#text) with the ability to change text color.
+- Adding [**Stickers**](#adding-imagesstickers).
+- Pinch to [**Zoom**](), [**Rotate**](), and [**Crop**]() images.
+- [**Undo and Redo**](#undo-and-redo) for any changes.
+- [**Saving**](#saving) edited photos.
+- Applying [**Filters**]() to your image.
+- Adjusting [**Contrast**]() and [**Saturation**]() of images.
+- Additional [**Beauty**]() settings for face enhancement.
 
 ## Benefits
-- Plug and play
-- Easy image editing
+- Simple plug-and-play integration.
+- Easy image editing features.
 
 <br>
 
@@ -35,7 +34,7 @@ Rotate Mode | Crop Mode
 :--: | :--:
 <img src="/static/rotate_mode.gif" width="300" /> | <img src="/static/crop_feature.gif" width="300" />
 
-Filter Mode |  Paint Mode
+Filter Mode | Paint Mode
 :--: | :--:
 <img src="/static/filter_mode.gif" width="300" /> | <img src="/static/paint_mode.gif" width="300" />
 
@@ -50,44 +49,41 @@ Brightness Mode | Sticker Mode
 <br>
 
 ## Getting Started
-Add it in your root build.gradle at the end of repositories:
+Add the JitPack repository to your root `build.gradle` file:
 ```
-  allprojects {
+allprojects {
     repositories {
-      ...
-      maven { url 'https://jitpack.io' }
+        ...
+        maven { url 'https://jitpack.io' }
     }
-  }
+}
 ```
 
-
-Add the dependency in gradle file of app module like this
+Add the dependency to your app's `build.gradle` file:
 ```
-implementation 'com.github.iamutkarshtiwari:Ananas:1.2.6'
+implementation 'com.github.mansoorulhaq166:Ananas:1.2.6'
 ```
 
-## [Important!]
+## Important!
 
-Add this to your app's `proguard-rules.pro` file:
-
+Update your `proguard-rules.pro` file:
 ```pro
 -keepclasseswithmembers class * {
     native <methods>;
 }
 ```
 
-And this to your app's `build.gradle`:
-
+Add this configuration to your app's `build.gradle`:
 ```
 compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
 }
 ```
 
-## NOTE:
+## RxJava Compatibility Note
 
-Since this library uses `RxJava 2.0` and if your project uses `RxJava 1.0`, then you need to add the below code to the gradle file of you app so that both versions can co-exist-
+If your project uses `RxJava 1.0`, and this library uses `RxJava 2.0`, add the following to your app’s `build.gradle` to allow both versions to co-exist:
 ```
 android {
     packagingOptions {
@@ -96,84 +92,74 @@ android {
 }
 ```
 
-## Starting the PhotoEditor activity
+## Starting the PhotoEditor Activity
 
-Add this constant to your activity class with your preferred request code:
+Define a request code in your activity:
 ```java
-private final int PHOTO_EDITOR_REQUEST_CODE = 231;// Any integer value as a request code.
+private final int PHOTO_EDITOR_REQUEST_CODE = 231; // Any integer value.
 ```
 
-Use the following code to build and launch the photo editor:
+Launch the photo editor with the following code:
 ```java
+try {
+    Intent intent = new ImageEditorIntentBuilder(this, sourceImagePath, outputFilePath)
+        .withAddText()
+        .withPaintFeature()
+        .withFilterFeature()
+        .withRotateFeature()
+        .withCropFeature()
+        .withBrightnessFeature()
+        .withSaturationFeature()
+        .withBeautyFeature()
+        .withStickerFeature()
+        .forcePortrait(true)
+        .setSupportActionBarVisibility(false)
+        .build();
 
- try {
-  Intent intent = new ImageEditorIntentBuilder(this, sourceImagePath, outputFilePath)
-         .withAddText() // Add the features you need
-         .withPaintFeature()
-         .withFilterFeature()
-         .withRotateFeature()
-         .withCropFeature()
-         .withBrightnessFeature()
-         .withSaturationFeature()
-         .withBeautyFeature()
-         .withStickerFeature()
-         .forcePortrait(true)  // Add this to force portrait mode (It's set to false by default)
-         .setSupportActionBarVisibility(false) // To hide app's default action bar
-         .build();
-
- EditImageActivity.start(activity, intent, PHOTO_EDITOR_REQUEST_CODE);
- } catch (Exception e) {
-     Log.e("Demo App", e.getMessage()); // This could throw if either `sourcePath` or `outputPath` is blank or Null
- }
+    EditImageActivity.start(activity, intent, PHOTO_EDITOR_REQUEST_CODE);
+} catch (Exception e) {
+    Log.e("Photo Editor", e.getMessage());
+}
 ```
 
-## Receiving the output image
+## Receiving the Output Image
 
-You can receive the new processed image path and it's edit status like this-
-```
- @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+Handle the result with the following code:
+```java
+@Override
+public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PHOTO_EDITOR_REQUEST_CODE) { // same code you used while starting
-            String newFilePath = data.getStringExtra(ImageEditorIntentBuilder.OUTPUT_PATH);
-            boolean isImageEdit = data.getBooleanExtra(EditImageActivity.IS_IMAGE_EDITED, false);
-        }
+    if (requestCode == PHOTO_EDITOR_REQUEST_CODE) {
+        String newFilePath = data.getStringExtra(ImageEditorIntentBuilder.OUTPUT_PATH);
+        boolean isImageEdit = data.getBooleanExtra(EditImageActivity.IS_IMAGE_EDITED, false);
     }
+}
 ```
 
-## Special Note
-The photo editor locks the current orientation in which it is started -
-1) If you started in `Portrait` mode, you can't switch to `Landscape` while the image editor activity is running.
-2) If you started in `Landscape` mode, you can't switch to `Portrait` during the same.
+## Special Notes
+The orientation will be locked when you start the editor. Once you exit, your app’s default behavior resumes:
+1. If started in `Portrait` mode, it stays in portrait.
+2. If started in `Landscape` mode, it remains in landscape.
 
-But once you navigate back to your original app, you are reverted back to your previous configuration change settings.
+## How to Contribute
+* Fork this project.
+* Make changes and commit.
+* Submit a pull request with a description of your changes.
 
-## How to contribute?
-* Fork the project.
-* Make required changes and commit.
-* Generate pull request. Mention all the required description regarding changes you made.
+Happy coding! 🎉
 
-Happy coding! :)
+## Future Enhancements
+- Add support for configuration changes during editing.
 
+## Questions? 🤔
+Feel free to reach out on GitHub.
 
-## What's next?
-- Add support for configuration change during photo editing
-
-
-## Questions?🤔
-Hit me on twitter
-[![Twitter](https://img.shields.io/badge/Twitter-%40iamutkarsht-blue.svg)](https://twitter.com/iamutkarsht)
-[![Facebook](https://img.shields.io/badge/Facebook-Utkarsh%20Tiwari-blue.svg)](https://www.facebook.com/iamutkarshtiwari)
-
-## How to submit a valid issue
-- **Make sure you compiled the latest version.** If it still doesn't work out, don't hesitate to open a new issue.
-- Describe the scenarios when crash happened as much as possible (pictures would be better).
-- Sharing your device type and Android OS version is very helpful.
-- Paste your XML or Java code.
-- Paste the crash log.
-- Be polite.
-
+## Issue Submission Guide
+- Ensure you're using the latest version.
+- Include details about the crash or issue, along with device type and OS version.
+- Provide code snippets and crash logs.
+- Be courteous and clear in your reports.
 
 ## Credits
 
