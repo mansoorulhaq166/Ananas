@@ -1,0 +1,8 @@
+com.example.ananas.photoeditor-updated_navigation_xml-0 /Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/build/generated/updated_navigation_xml/debug
+com.example.ananas.photoeditor-mergeDebugResources-1 /Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.ananas.photoeditor-mergeDebugResources-2 /Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.ananas.photoeditor-debug-3 /Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/build/intermediates/merged_res/debug/mergeDebugResources
+com.example.ananas.photoeditor-debug-4 /Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/build/intermediates/packaged_res/debug/packageDebugResources
+com.example.ananas.photoeditor-debug-5 /Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/src/debug/res
+com.example.ananas.photoeditor-main-6 /Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/src/main/res
+gradleHome-0 /Users/apple/.gradle

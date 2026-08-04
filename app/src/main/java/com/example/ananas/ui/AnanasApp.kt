@@ -39,6 +39,12 @@ fun AnanasApp(
         }
     }
 
+    LaunchedEffect(state.lastExportUri) {
+        if (state.lastExportUri != null) {
+            viewModel.closeDocument()
+        }
+    }
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background,

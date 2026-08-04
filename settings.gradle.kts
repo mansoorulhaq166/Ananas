@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Ananas"
 include(":app")
+include(":photoeditor")

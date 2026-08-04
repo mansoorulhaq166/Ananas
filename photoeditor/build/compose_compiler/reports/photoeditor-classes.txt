@@ -1,0 +1,11 @@
+unstable class com.example.ananas.editor.ImageRepository {
+  unstable val context: Context
+  runtime val sessionMutex: Mutex
+  unstable val sessionEpoch: AtomicLong
+  unstable val exportSequence: AtomicLong
+  unstable val activityManager: ActivityManager
+  stable val lowRamDevice: Boolean
+  stable val decodeMaxPixels: Long
+  stable val decodeMaxDimension: Int
+  <runtime stability> = Unstable
+}

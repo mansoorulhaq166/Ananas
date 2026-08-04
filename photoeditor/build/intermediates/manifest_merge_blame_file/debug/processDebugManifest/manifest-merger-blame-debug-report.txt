@@ -1,0 +1,21 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.ananas.photoeditor" >
+4
+5    <uses-sdk android:minSdkVersion="23" />
+5-->INJECTED
+5-->INJECTED
+6
+7    <application>
+7-->/Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/src/main/AndroidManifest.xml:3:5-8:19
+8        <activity
+8-->/Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/src/main/AndroidManifest.xml:4:9-7:58
+9            android:name="com.example.ananas.photoeditor.EditImageActivity"
+9-->/Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/src/main/AndroidManifest.xml:5:13-46
+10            android:theme="@style/AppTheme"
+10-->/Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/src/main/AndroidManifest.xml:6:13-44
+11            android:windowSoftInputMode="adjustResize" />
+11-->/Users/apple/AndroidStudioProjects/MyApps/Ananas/photoeditor/src/main/AndroidManifest.xml:7:13-55
+12    </application>
+13
+14</manifest>
